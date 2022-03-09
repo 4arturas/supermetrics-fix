@@ -1,27 +1,41 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+interface Post {
+    id: string,
+    from_name: string,
+    from_id: string,
+    message: string,
+    type: string,
+    created_time: string
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+abstract class ToString {
+    toString(): string
 }
+abstract class Print {
+    print()
+}
+class PrintConsole {
+}
+abstract class Statistics {
+    group(): Array<GroupByObj>
+}
+
+interface GroupByObj {
+    numerical: number;
+    categorical: string;
+}
+
+GroupByObj --o PrintConsole
+Post --o Statistics
+
+Print <|-- PrintConsole
+
+class AverageCharLengthOfPostsPerMonth
+ToString <|-- AverageCharLengthOfPostsPerMonth
+GroupByObj <|-- AverageCharLengthOfPostsPerMonth
+
+Statistics <|-- AverageCharLengthOfPostsPerMonthImpl
 
 @enduml
