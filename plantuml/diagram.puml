@@ -37,9 +37,14 @@ ToString <|-- AverageCharLengthOfPostsPerMonth
 GroupByObj <|-- AverageCharLengthOfPostsPerMonth
 ToString <|-- LongestPostByCharacterLengthPerMonth
 GroupByObj <|-- LongestPostByCharacterLengthPerMonth
+ToString <|-- TotalPostsSplitByWeekNumber
+GroupByObj <|-- TotalPostsSplitByWeekNumber
+ToString <|-- AverageNumberOfPostsPerUserPerMonth
+GroupByObj <|-- AverageNumberOfPostsPerUserPerMonth
 
 Statistics <|-- AverageCharLengthOfPostsPerMonthImpl
 Statistics <|-- LongestPostByCharacterLengthPerMonthImpl
 Statistics <|-- TotalPostsSplitByWeekNumberImpl
+Statistics <|-- AverageNumberOfPostsPerUserPerMonthImpl
 
 @enduml

@@ -10,6 +10,10 @@ import {
     LongestPostByCharacterLengthPerMonthImpl
 } from "./statistics/longestPostByCharacterLengthPerMonth";
 import {TotalPostsSplitByWeekNumber, TotalPostsSplitByWeekNumberImpl} from "./statistics/totalPostsSplitByWeekNumber";
+import {
+    AverageNumberOfPostsPerUserPerMonth,
+    AverageNumberOfPostsPerUserPerMonthImpl
+} from "./statistics/averageNumberOfPostsPerUserPerMonth";
 
 function readFile(): Array<Post>
 {
@@ -44,8 +48,15 @@ async function test()
     console.log('#########################################################################');
     console.log( 'Total posts split by week number' );
     const totalPostsSplitByWeekNr : Array<TotalPostsSplitByWeekNumber> = new TotalPostsSplitByWeekNumberImpl( posts ).group();
-    const printTotalPostsSplitByWeekNumber:Print = new PrintConsole( longestPostByCharLenPerMonth );
+    const printTotalPostsSplitByWeekNumber:Print = new PrintConsole( totalPostsSplitByWeekNr );
     printTotalPostsSplitByWeekNumber.print();
+
+    // d. - Average number of posts per user per month
+    console.log('#########################################################################');
+    console.log( 'Average number of posts per user per month' );
+    const averageNrOfPostsPerUserPerMonth: Array<AverageNumberOfPostsPerUserPerMonth> = new AverageNumberOfPostsPerUserPerMonthImpl( posts ).group();
+    const printAverageNumberOfPostsPerUserPerMonth:Print = new PrintConsole( averageNrOfPostsPerUserPerMonth );
+    printAverageNumberOfPostsPerUserPerMonth.print();
 
 }
 test();
