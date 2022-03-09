@@ -35,7 +35,10 @@ Print <|-- PrintConsole
 class AverageCharLengthOfPostsPerMonth
 ToString <|-- AverageCharLengthOfPostsPerMonth
 GroupByObj <|-- AverageCharLengthOfPostsPerMonth
+ToString <|-- LongestPostByCharacterLengthPerMonth
+GroupByObj <|-- LongestPostByCharacterLengthPerMonth
 
 Statistics <|-- AverageCharLengthOfPostsPerMonthImpl
+Statistics <|-- LongestPostByCharacterLengthPerMonthImpl
 
 @enduml

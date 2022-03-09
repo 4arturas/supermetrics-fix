@@ -5,6 +5,10 @@ import {
     AverageCharLengthOfPostsPerMonth, AverageCharLengthOfPostsPerMonthImpl
 } from "./statistics/averageCharactersLengthOfPostsPerMonth";
 import {Print, PrintConsole} from "./print";
+import {
+    LongestPostByCharacterLengthPerMonth,
+    LongestPostByCharacterLengthPerMonthImpl
+} from "./statistics/longestPostByCharacterLengthPerMonth";
 
 function readFile(): Array<Post>
 {
@@ -27,6 +31,13 @@ async function test()
     const averageCharLengthOfPostsPerMonth: Array<AverageCharLengthOfPostsPerMonth>  = new AverageCharLengthOfPostsPerMonthImpl(posts).group();
     const printAverageCharLengthOfPostsPerMonth:Print = new PrintConsole( averageCharLengthOfPostsPerMonth );
     printAverageCharLengthOfPostsPerMonth.print();
+
+    // b. - Longest post by character length per month
+    console.log('#########################################################################');
+    console.log( 'Longest post by character length per month' );
+    const longestPostByCharLenPerMonth : Array<LongestPostByCharacterLengthPerMonth> = new LongestPostByCharacterLengthPerMonthImpl(posts).group();
+    const printLongestPostByCharacterLengthPerMonth:Print = new PrintConsole( longestPostByCharLenPerMonth );
+    printLongestPostByCharacterLengthPerMonth.print();
 
 }
 test();
