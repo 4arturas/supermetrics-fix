@@ -1,7 +1,7 @@
 import {GroupByObj} from "./statistics/statistics";
 
 export class ToString {
-    toString() {
+    toString(): string {
         throw new Error("Not implemented exception!!!");
     }
 }
