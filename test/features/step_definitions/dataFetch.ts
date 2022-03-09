@@ -20,17 +20,17 @@ Given(/^Connect API$/, async function () {
     assert(status === 200, "When connected to API status must be 200");
 });
 
-const pages:number = 10;
+const pages: number = 10;
 const posts1000: Array<Post> = new Array<Post>();
 When(/^Fetch data$/, async function () {
     for (let page: number = 1; page <= pages; page++) {
         const postsPage: Array<Post> = await api.getDataFromSupermetricsAPI(page);
         assert(postsPage !== null, "API must return data");
-        posts1000.push( ...postsPage );
+        posts1000.push(...postsPage);
     }
 });
 
 Then(/^Check if Supermetrics API returns 1000 records$/, function () {
-    const mustReturn:number = pages*100;
-    assert( posts1000.length === mustReturn, `Api must return ${mustReturn} records`);
+    const mustReturn: number = pages * 100;
+    assert(posts1000.length === mustReturn, `Api must return ${mustReturn} records`);
 });
