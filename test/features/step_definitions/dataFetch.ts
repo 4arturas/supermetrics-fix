@@ -20,8 +20,6 @@ Given(/^Connect API$/, async function () {
     assert(status === 200, "When connected to API status must be 200");
 });
 
-
-
 const pages:number = 10;
 const posts1000: Array<Post> = new Array<Post>();
 When(/^Fetch data$/, async function () {
