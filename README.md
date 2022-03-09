@@ -6,3 +6,9 @@
 ### Diagram 2
 ![Diagram2](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/4arturas/supermetrics-fix/master/plantuml/diagram2.puml)
 
+## BDD testing
+Run this command
+````
+npm run test
+````
+
