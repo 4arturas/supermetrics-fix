@@ -1,14 +1,4 @@
 @startuml
-'https://plantuml.com/class-diagram
-
-interface Post {
-    id: string,
-    from_name: string,
-    from_id: string,
-    message: string,
-    type: string,
-    created_time: string
-}
 
 abstract class ToString {
     toString(): string
@@ -18,9 +8,7 @@ abstract class Print {
 }
 class PrintConsole {
 }
-abstract class Statistics {
-    group(): Array<GroupByObj>
-}
+
 
 interface GroupByObj {
     numerical: number;
@@ -28,11 +16,10 @@ interface GroupByObj {
 }
 
 GroupByObj --o PrintConsole
-Post --o Statistics
 
 Print <|-- PrintConsole
 
-class AverageCharLengthOfPostsPerMonth
+
 ToString <|-- AverageCharLengthOfPostsPerMonth
 GroupByObj <|-- AverageCharLengthOfPostsPerMonth
 ToString <|-- LongestPostByCharacterLengthPerMonth
@@ -41,10 +28,5 @@ ToString <|-- TotalPostsSplitByWeekNumber
 GroupByObj <|-- TotalPostsSplitByWeekNumber
 ToString <|-- AverageNumberOfPostsPerUserPerMonth
 GroupByObj <|-- AverageNumberOfPostsPerUserPerMonth
-
-Statistics <|-- AverageCharLengthOfPostsPerMonthImpl
-Statistics <|-- LongestPostByCharacterLengthPerMonthImpl
-Statistics <|-- TotalPostsSplitByWeekNumberImpl
-Statistics <|-- AverageNumberOfPostsPerUserPerMonthImpl
 
 @enduml

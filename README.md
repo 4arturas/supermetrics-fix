@@ -1,1 +1,2 @@
-![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/4arturas/supermetrics-fix/master/plantuml/diagram.puml)
+![Diagram1](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/4arturas/supermetrics-fix/master/plantuml/diagram1.puml)
+![Diagram2](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/4arturas/supermetrics-fix/master/plantuml/diagram2.puml)

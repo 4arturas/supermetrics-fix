@@ -1,0 +1,23 @@
+@startuml
+
+interface Post {
+    id: string,
+    from_name: string,
+    from_id: string,
+    message: string,
+    type: string,
+    created_time: string
+}
+
+abstract class Statistics {
+    group(): Array<GroupByObj>
+}
+
+Post --o Statistics
+
+Statistics <|-- AverageCharLengthOfPostsPerMonthImpl
+Statistics <|-- LongestPostByCharacterLengthPerMonthImpl
+Statistics <|-- TotalPostsSplitByWeekNumberImpl
+Statistics <|-- AverageNumberOfPostsPerUserPerMonthImpl
+
+@enduml
