@@ -1,32 +1,39 @@
 import moment from "moment";
 import {Post} from "../post";
+import {GroupByObj, Statistics} from "./statistics";
+import {ToString} from "../print";
 
-export class AverageCharLengthOfPostsPerMonth {
-    month: string;
-    averageCharacterLength: number;
+
+export class AverageCharLengthOfPostsPerMonth extends ToString implements GroupByObj {
+
+    categorical: string;
+    numerical: number;
 
     constructor(month: string, averageCharacterLength: number) {
-        this.month = month;
-        this.averageCharacterLength = averageCharacterLength;
+        super();
+        this.categorical = month;
+        this.numerical = averageCharacterLength;
     }
 
     toString() {
-        return `{ month: "${this.month}", averageCharacterLength: ${this.averageCharacterLength} }`;
+        return `{ month: "${this.categorical}", averageCharacterLength: ${this.numerical} }`;
     }
 }
 
-export function averageCharactersLengthOfPostsPerMonth( posts : Array<Post> ) : Array<AverageCharLengthOfPostsPerMonth>
-{
-    const totalCharactersLengthPerMonth = posts.reduce( (acc : Record<string, Array<number>>, post : Post) => {
-        const month: string = moment(post.created_time).format('YYYY-MM');
-        if (!acc[month])
-            acc[month] = [];
-        acc[month].push(post.message.length);
-        return acc;
-    }, {} );
+export class AverageCharLengthOfPostsPerMonthImpl extends Statistics {
+    group(): Array<GroupByObj> {
+        const totalCharactersLengthPerMonth = this.posts.reduce((acc: Record<string, Array<number>>, post: Post) => {
+            const month: string = moment(post.created_time).format('YYYY-MM');
+            if (!acc[month])
+                acc[month] = [];
+            acc[month].push(post.message.length);
+            return acc;
+        }, {});
 
-    return Object.keys( totalCharactersLengthPerMonth )
-        .map( ( month ) => {
-            return new AverageCharLengthOfPostsPerMonth(month, totalCharactersLengthPerMonth[month].reduce( ( previous : number, current : number ) => previous + current , 0 ) / totalCharactersLengthPerMonth[month].length );
-        } );
+        return Object.keys(totalCharactersLengthPerMonth)
+            .map((month) => {
+                const averageCharacterLength = totalCharactersLengthPerMonth[month].length === 0 ? 0 : totalCharactersLengthPerMonth[month].reduce((previous: number, current: number) => previous + current, 0) / totalCharactersLengthPerMonth[month].length;
+                return new AverageCharLengthOfPostsPerMonth(month, averageCharacterLength);
+            });
+    }
 }

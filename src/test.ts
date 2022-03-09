@@ -2,9 +2,9 @@ import * as path from "path";
 import * as fs from "fs";
 import {Post} from "./post";
 import {
-    averageCharactersLengthOfPostsPerMonth,
-    AverageCharLengthOfPostsPerMonth
+    AverageCharLengthOfPostsPerMonth, AverageCharLengthOfPostsPerMonthImpl
 } from "./statistics/averageCharactersLengthOfPostsPerMonth";
+import {Print, PrintConsole} from "./print";
 
 function readFile(): Array<Post>
 {
@@ -24,7 +24,9 @@ async function test()
     // a. - Average character length of posts per month
     console.log('#########################################################################');
     console.log( 'Average character length of posts per month' );
-    const averageCharLengthOfPostsPerMonth: Array<AverageCharLengthOfPostsPerMonth>  = averageCharactersLengthOfPostsPerMonth( posts );
-    averageCharLengthOfPostsPerMonth.forEach( a => console.log( a.toString() ) );
+    const averageCharLengthOfPostsPerMonth: Array<AverageCharLengthOfPostsPerMonth>  = new AverageCharLengthOfPostsPerMonthImpl(posts).group();
+    const printAverageCharLengthOfPostsPerMonth:Print = new PrintConsole( averageCharLengthOfPostsPerMonth );
+    printAverageCharLengthOfPostsPerMonth.print();
+
 }
 test();
