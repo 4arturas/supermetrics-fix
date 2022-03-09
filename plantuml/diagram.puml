@@ -40,5 +40,6 @@ GroupByObj <|-- LongestPostByCharacterLengthPerMonth
 
 Statistics <|-- AverageCharLengthOfPostsPerMonthImpl
 Statistics <|-- LongestPostByCharacterLengthPerMonthImpl
+Statistics <|-- TotalPostsSplitByWeekNumberImpl
 
 @enduml

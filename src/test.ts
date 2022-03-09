@@ -9,6 +9,7 @@ import {
     LongestPostByCharacterLengthPerMonth,
     LongestPostByCharacterLengthPerMonthImpl
 } from "./statistics/longestPostByCharacterLengthPerMonth";
+import {TotalPostsSplitByWeekNumber, TotalPostsSplitByWeekNumberImpl} from "./statistics/totalPostsSplitByWeekNumber";
 
 function readFile(): Array<Post>
 {
@@ -38,6 +39,13 @@ async function test()
     const longestPostByCharLenPerMonth : Array<LongestPostByCharacterLengthPerMonth> = new LongestPostByCharacterLengthPerMonthImpl(posts).group();
     const printLongestPostByCharacterLengthPerMonth:Print = new PrintConsole( longestPostByCharLenPerMonth );
     printLongestPostByCharacterLengthPerMonth.print();
+
+    // c. - Total posts split by week number
+    console.log('#########################################################################');
+    console.log( 'Total posts split by week number' );
+    const totalPostsSplitByWeekNr : Array<TotalPostsSplitByWeekNumber> = new TotalPostsSplitByWeekNumberImpl( posts ).group();
+    const printTotalPostsSplitByWeekNumber:Print = new PrintConsole( longestPostByCharLenPerMonth );
+    printTotalPostsSplitByWeekNumber.print();
 
 }
 test();
