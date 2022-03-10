@@ -19,7 +19,7 @@
     "path": "^0.12.7"
   },
   "scripts": {
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint . --ext .ts --fix",
     "dev": "tsc && node dist/task.js",
     "test": "cucumber-js test/features --require-module ts-node/register --require 'test/features/**/*.ts'",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
