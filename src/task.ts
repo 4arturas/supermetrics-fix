@@ -35,7 +35,11 @@ class Task {
       email,
       name
     );
-    await api.connectToSupermetricsAPI();
+    const status = await api.connectToSupermetricsAPI();
+    if (status !== 200) {
+      console.error('Can not connect to api! Please try one more time.');
+      return;
+    }
 
     console.log('Give me one second please');
 
@@ -50,51 +54,31 @@ class Task {
     // Show stats on the following:
 
     // a. - Average character length of posts per month
-    console.log(
-      '#########################################################################'
-    );
+    console.log('##############################################');
     console.log('Average character length of posts per month');
-    const averageCharLengthOfPostsPerMonth: Array<AverageCharLengthOfPostsPerMonth> =
-      new AverageCharLengthOfPostsPerMonthImpl(posts).group();
-    const printAverageCharLengthOfPostsPerMonth: Print = new PrintConsole(
-      averageCharLengthOfPostsPerMonth
-    );
+    const averageCharLengthOfPostsPerMonth: Array<AverageCharLengthOfPostsPerMonth> = new AverageCharLengthOfPostsPerMonthImpl(posts).group();
+    const printAverageCharLengthOfPostsPerMonth: Print = new PrintConsole(averageCharLengthOfPostsPerMonth);
     printAverageCharLengthOfPostsPerMonth.print();
 
     // b. - Longest post by character length per month
-    console.log(
-      '#########################################################################'
-    );
+    console.log('##############################################');
     console.log('Longest post by character length per month');
-    const longestPostByCharLenPerMonth: Array<LongestPostByCharacterLengthPerMonth> =
-      new LongestPostByCharacterLengthPerMonthImpl(posts).group();
-    const printLongestPostByCharacterLengthPerMonth: Print = new PrintConsole(
-      longestPostByCharLenPerMonth
-    );
+    const longestPostByCharLenPerMonth: Array<LongestPostByCharacterLengthPerMonth> = new LongestPostByCharacterLengthPerMonthImpl(posts).group();
+    const printLongestPostByCharacterLengthPerMonth: Print = new PrintConsole(longestPostByCharLenPerMonth);
     printLongestPostByCharacterLengthPerMonth.print();
 
     // c. - Total posts split by week number
-    console.log(
-      '#########################################################################'
-    );
+    console.log('##############################################');
     console.log('Total posts split by week number');
-    const totalPostsSplitByWeekNr: Array<TotalPostsSplitByWeekNumber> =
-      new TotalPostsSplitByWeekNumberImpl(posts).group();
-    const printTotalPostsSplitByWeekNumber: Print = new PrintConsole(
-      totalPostsSplitByWeekNr
-    );
+    const totalPostsSplitByWeekNr: Array<TotalPostsSplitByWeekNumber> = new TotalPostsSplitByWeekNumberImpl(posts).group();
+    const printTotalPostsSplitByWeekNumber: Print = new PrintConsole(totalPostsSplitByWeekNr);
     printTotalPostsSplitByWeekNumber.print();
 
     // d. - Average number of posts per user per month
-    console.log(
-      '#########################################################################'
-    );
+    console.log('##############################################');
     console.log('Average number of posts per user per month');
-    const averageNrOfPostsPerUserPerMonth: Array<AverageNumberOfPostsPerUserPerMonth> =
-      new AverageNumberOfPostsPerUserPerMonthImpl(posts).group();
-    const printAverageNumberOfPostsPerUserPerMonth: Print = new PrintConsole(
-      averageNrOfPostsPerUserPerMonth
-    );
+    const averageNrOfPostsPerUserPerMonth: Array<AverageNumberOfPostsPerUserPerMonth> = new AverageNumberOfPostsPerUserPerMonthImpl(posts).group();
+    const printAverageNumberOfPostsPerUserPerMonth: Print = new PrintConsole(averageNrOfPostsPerUserPerMonth);
     printAverageNumberOfPostsPerUserPerMonth.print();
   }
 }
