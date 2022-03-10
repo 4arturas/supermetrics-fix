@@ -5,6 +5,9 @@
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.2"
   },
@@ -18,6 +21,7 @@
   "scripts": {
     "lint": "eslint . --ext .ts",
     "dev": "tsc && node dist/task.js",
-    "test": "cucumber-js test/features --require-module ts-node/register --require 'test/features/**/*.ts'"
+    "test": "cucumber-js test/features --require-module ts-node/register --require 'test/features/**/*.ts'",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   }
 }
