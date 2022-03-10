@@ -29,7 +29,7 @@ endif
 
 |TASK|
 :data|
-:make required calculations;
+:make statistical calculations;
 :show results for the user;
 
 stop
