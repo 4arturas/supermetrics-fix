@@ -8,7 +8,6 @@ import {
     LongestPostByCharacterLengthPerMonth,
     LongestPostByCharacterLengthPerMonthImpl
 } from "../../../src/statistics/longestPostByCharacterLengthPerMonth";
-import {Print, PrintConsole} from "../../../src/print";
 import {
     TotalPostsSplitByWeekNumber,
     TotalPostsSplitByWeekNumberImpl
@@ -17,8 +16,7 @@ import {
     AverageNumberOfPostsPerUserPerMonth,
     AverageNumberOfPostsPerUserPerMonthImpl
 } from "../../../src/statistics/averageNumberOfPostsPerUserPerMonth";
-
-const {Given, When, Then} = require("@cucumber/cucumber");
+import {Given} from "@cucumber/cucumber";
 
 function createPost(id:string, from_name:string, from_id:string, message:string, type:string, created_time:string): Post {
     return {"id":`${id}`,"from_name":`${from_name}`,"from_id":`${from_id}`,"message":`${message}`,"type":`${type}`,"created_time":`${created_time}`};

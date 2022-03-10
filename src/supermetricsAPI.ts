@@ -1,5 +1,5 @@
 import {Post} from "./post";
-const axios = require("axios");
+import axios from "axios";
 
 export class SupermetricsAPI {
 
