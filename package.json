@@ -17,7 +17,7 @@
   },
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "dev": "tsc && node dist/test.js",
+    "dev": "tsc && node dist/task.js",
     "test": "cucumber-js test/features --require-module ts-node/register --require 'test/features/**/*.ts'"
   }
 }
