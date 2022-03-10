@@ -19,6 +19,7 @@ import {
 } from './statistics/averageNumberOfPostsPerUserPerMonth';
 import { SupermetricsAPI } from './supermetricsAPI';
 import { Post } from './post';
+import {Statistics} from "./statistics/statistics";
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
@@ -56,29 +57,33 @@ class Task {
     // a. - Average character length of posts per month
     console.log('##############################################');
     console.log('Average character length of posts per month');
-    const averageCharLengthOfPostsPerMonth: Array<AverageCharLengthOfPostsPerMonth> = new AverageCharLengthOfPostsPerMonthImpl(posts).group();
-    const printAverageCharLengthOfPostsPerMonth: Print = new PrintConsole(averageCharLengthOfPostsPerMonth);
-    printAverageCharLengthOfPostsPerMonth.print();
+    const statAvgCharLengthOfPostsPerMonth: Statistics = new AverageCharLengthOfPostsPerMonthImpl(posts);
+    const avgCharLengthOfPostsPerMonth: Array<AverageCharLengthOfPostsPerMonth> = statAvgCharLengthOfPostsPerMonth.group();
+    const printAvgCharLengthOfPostsPerMonth: Print = new PrintConsole(avgCharLengthOfPostsPerMonth);
+    printAvgCharLengthOfPostsPerMonth.print();
 
     // b. - Longest post by character length per month
     console.log('##############################################');
     console.log('Longest post by character length per month');
-    const longestPostByCharLenPerMonth: Array<LongestPostByCharacterLengthPerMonth> = new LongestPostByCharacterLengthPerMonthImpl(posts).group();
+    const statLongestPostByCharLenPerMonth: Statistics = new LongestPostByCharacterLengthPerMonthImpl(posts);
+    const longestPostByCharLenPerMonth: Array<LongestPostByCharacterLengthPerMonth> = statLongestPostByCharLenPerMonth.group();
     const printLongestPostByCharacterLengthPerMonth: Print = new PrintConsole(longestPostByCharLenPerMonth);
     printLongestPostByCharacterLengthPerMonth.print();
 
     // c. - Total posts split by week number
     console.log('##############################################');
     console.log('Total posts split by week number');
-    const totalPostsSplitByWeekNr: Array<TotalPostsSplitByWeekNumber> = new TotalPostsSplitByWeekNumberImpl(posts).group();
+    const statTotalPostsSplitByWeekNr: Statistics = new TotalPostsSplitByWeekNumberImpl(posts);
+    const totalPostsSplitByWeekNr: Array<TotalPostsSplitByWeekNumber> = statTotalPostsSplitByWeekNr.group();
     const printTotalPostsSplitByWeekNumber: Print = new PrintConsole(totalPostsSplitByWeekNr);
     printTotalPostsSplitByWeekNumber.print();
 
     // d. - Average number of posts per user per month
     console.log('##############################################');
     console.log('Average number of posts per user per month');
-    const averageNrOfPostsPerUserPerMonth: Array<AverageNumberOfPostsPerUserPerMonth> = new AverageNumberOfPostsPerUserPerMonthImpl(posts).group();
-    const printAverageNumberOfPostsPerUserPerMonth: Print = new PrintConsole(averageNrOfPostsPerUserPerMonth);
+    const statAvgNrOfPostsPerUserPerMonth: Statistics = new AverageNumberOfPostsPerUserPerMonthImpl(posts);
+    const avgNrOfPostsPerUserPerMonth: Array<AverageNumberOfPostsPerUserPerMonth> = statAvgNrOfPostsPerUserPerMonth.group();
+    const printAverageNumberOfPostsPerUserPerMonth: Print = new PrintConsole(avgNrOfPostsPerUserPerMonth);
     printAverageNumberOfPostsPerUserPerMonth.print();
   }
 }
