@@ -3,3 +3,4 @@ Feature: Data fetch
     Given Connect API
     When Fetch data
     Then Check if Supermetrics API returns 1000 records
+    And Data format is consistent

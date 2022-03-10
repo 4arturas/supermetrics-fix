@@ -36,3 +36,15 @@ Then(/^Check if Supermetrics API returns 1000 records$/, function () {
     `Api must return ${mustReturn} records`
   );
 });
+
+Then(/^Data format is consistent$/, function () {
+  posts1000.forEach((post)=>{
+    assert(post.hasOwnProperty('id'), 'No "id" property');
+    assert(post.hasOwnProperty('from_name'), 'No "from_name" property');
+    assert(post.hasOwnProperty('from_id'), 'No "from_id" property');
+    assert(post.hasOwnProperty('message'), 'No "message" property');
+    assert(post.hasOwnProperty('type'), 'No "type" property');
+    assert(post.hasOwnProperty('created_time'), 'No "created_time" property');
+    assert(!post.hasOwnProperty('fake_property'), 'Has "fake_property" property?');
+  });
+});
