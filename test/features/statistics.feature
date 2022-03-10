@@ -3,3 +3,5 @@ Feature: Test statistical functions
     Given Average character length of posts per month
   Scenario: Longest post by character length per month scenario
     Given Longest post by character length per month
+  Scenario: Total posts split by week number scenario
+    Given Total posts split by week number
