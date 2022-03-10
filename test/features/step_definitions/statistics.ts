@@ -70,7 +70,6 @@ Given(/^Longest post by character length per month$/, async function () {
         createPost( "id", "from_name", "from_id", "22", "type", "2022-03-03T00:00:00+00:00"),
         createPost( "id", "from_name", "from_id", "333", "type", "2022-03-03T00:00:00+00:00"),
 
-
         createPost( "id", "from_name", "from_id", "4444", "type", "2022-04-01T00:00:00+00:00")
     ];
 
@@ -104,7 +103,6 @@ Given(/^Total posts split by week number$/, async function () {
         createPost( "id", "from_name", "from_id", "1", "type", "2022-03-01T00:00:00+00:00"),
         createPost( "id", "from_name", "from_id", "22", "type", "2022-03-01T00:00:00+00:00"),
         createPost( "id", "from_name", "from_id", "333", "type", "2022-03-01T00:00:00+00:00"),
-
 
         createPost( "id", "from_name", "from_id", "4444", "type", "2022-04-01T00:00:00+00:00")
     ];
