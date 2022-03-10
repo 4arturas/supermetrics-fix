@@ -13,6 +13,10 @@ import {
     TotalPostsSplitByWeekNumber,
     TotalPostsSplitByWeekNumberImpl
 } from "../../../src/statistics/totalPostsSplitByWeekNumber";
+import {
+    AverageNumberOfPostsPerUserPerMonth,
+    AverageNumberOfPostsPerUserPerMonthImpl
+} from "../../../src/statistics/averageNumberOfPostsPerUserPerMonth";
 
 const {Given, When, Then} = require("@cucumber/cucumber");
 
@@ -121,4 +125,38 @@ Given(/^Total posts split by week number$/, async function () {
     assert( totalPostsSplitByWeekNr[3].numerical === 1 );
     assert( totalPostsSplitByWeekNr[3].categorical === '2022-14' );
 
+});
+
+Given(/^Average number of posts per user per month$/, async function () {
+    const posts:Array<Post> = [
+        createPost( "id", "from_name", "u1", "", "type", "2022-01-01T00:00:00+00:00"),
+        createPost( "id", "from_name", "u1", "", "type", "2022-01-01T00:00:00+00:00"),
+        createPost( "id", "from_name", "u1", "", "type", "2022-01-01T00:00:00+00:00"),
+
+        createPost( "id", "from_name", "u2", "", "type", "2022-01-01T00:00:00+00:00"),
+        createPost( "id", "from_name", "u2", "", "type", "2022-02-01T00:00:00+00:00"),
+        createPost( "id", "from_name", "u2", "", "type", "2022-03-01T00:00:00+00:00"),
+
+        createPost( "id", "from_name", "u3", "", "type", "2022-01-01T00:00:00+00:00"),
+        createPost( "id", "from_name", "u3", "", "type", "2022-02-01T00:00:00+00:00"),
+        createPost( "id", "from_name", "u3", "", "type", "2022-02-01T00:00:00+00:00"),
+        createPost( "id", "from_name", "u3", "", "type", "2022-02-01T00:00:00+00:00"),
+        createPost( "id", "from_name", "u3", "", "type", "2022-02-01T00:00:00+00:00"),
+        createPost( "id", "from_name", "u3", "", "type", "2022-02-01T00:00:00+00:00"),
+        createPost( "id", "from_name", "u3", "", "type", "2022-02-01T00:00:00+00:00"),
+        createPost( "id", "from_name", "u3", "", "type", "2022-02-01T00:00:00+00:00"),
+        createPost( "id", "from_name", "u3", "", "type", "2022-03-01T00:00:00+00:00"),
+    ];
+    const averageNrOfPostsPerUserPerMonth: Array<AverageNumberOfPostsPerUserPerMonth> = new AverageNumberOfPostsPerUserPerMonthImpl( posts ).group();
+
+    assert( averageNrOfPostsPerUserPerMonth.length === 3, "This test must return three records" );
+
+    assert( averageNrOfPostsPerUserPerMonth[0].numerical === 3 );
+    assert( averageNrOfPostsPerUserPerMonth[0].categorical === 'u1' );
+
+    assert( averageNrOfPostsPerUserPerMonth[1].numerical === 1 );
+    assert( averageNrOfPostsPerUserPerMonth[1].categorical === 'u2' );
+
+    assert( averageNrOfPostsPerUserPerMonth[2].numerical === 3 );
+    assert( averageNrOfPostsPerUserPerMonth[2].categorical === 'u3' );
 });
