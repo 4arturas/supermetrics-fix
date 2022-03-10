@@ -1,0 +1,36 @@
+@startuml
+|TASK|
+start
+:connect API;
+|API|
+:client_id, email, name|
+
+if (client_id ok?) then (no)
+    |TASK|
+    :client_id was wrong<
+    stop;    
+else (yes)
+    |TASK|
+    :sl_token|
+endif
+:fetch data;
+
+|API|
+:sl_token|
+if (sl_token ok?) then (no)
+    |TASK|
+    :sl_token was wrong<
+    stop;
+else (yes)
+    |API|
+    :collect data;
+    :send data;
+endif
+
+|TASK|
+:data|
+:make required calculations;
+:show results for the user;
+
+stop
+@enduml
