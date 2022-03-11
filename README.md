@@ -18,3 +18,4 @@ npm run test
 ### Flow diagram
 ![Flow diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/4arturas/supermetrics-fix/master/plantuml/diagram3.puml)
 
+
