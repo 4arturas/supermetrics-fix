@@ -17,5 +17,3 @@ npm run test
 ![Representational classes diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/4arturas/supermetrics-fix/master/plantuml/diagram2.puml)
 ### Flow diagram
 ![Flow diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/4arturas/supermetrics-fix/master/plantuml/diagram3.puml)
-
-
